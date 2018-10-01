@@ -16,7 +16,7 @@ switchesVarDefaults = (
     )
 
 
-progname = "framedClient"
+progname = "fileClient"
 paramMap = params.parseParams(switchesVarDefaults)
 
 server, usage, debug  = paramMap["server"], paramMap["usage"], paramMap["debug"]
@@ -61,7 +61,8 @@ if s is None:
 #STORE the name of the file that user wants to send
 userInput = input("Type in command: ")
 args = userInput.split(" ")  #store in input as list
-clientFile = args[len(args)-1] #nassuming that ame of the file will always be types last
+clientFile = args[len(args)-1] #nassuming that name of the file will always be types last
+print("Sending " clientFile "...")
 byteL = 100
 
 #check if file exists
@@ -69,12 +70,6 @@ if not os.path.exists(clientFile):
     print ("File %s doesn't exist! Exiting" % outputFname)
     exit()
     
-##f = open("test.txt",'a')
-###seek end of file to append ':' to indicate end of "message" transfer
-##f.seek(2) # end of file
-##f.write(':')
-##f.close()
-
 #handling put
 if "put" in clientFile:
     
@@ -88,15 +83,5 @@ if "put" in clientFile:
             byte = f.read(1)
     
 
-    
-    
-
-### attempt to open file to start sending to server
-##with open("test.txt", 'r') as rFile:
-##    for line in rFile:
-##        #1 indicates the current position
-## #       sendBytes = rFile.seek(1,2)  #get the contents from the current position until 100 bytes for limit
-##        framedSend(s, rFile.read(100), debug)  #send
-##        
-       
+          
 

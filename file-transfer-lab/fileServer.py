@@ -13,7 +13,7 @@ switchesVarDefaults = (
     (('-?', '--usage'), "usage", False), # boolean (set if present)
     )
 
-progname = "echoserver"
+progname = "fileServer"
 paramMap = params.parseParams(switchesVarDefaults)
 
 debug, listenPort = paramMap['debug'], paramMap['listenPort']
