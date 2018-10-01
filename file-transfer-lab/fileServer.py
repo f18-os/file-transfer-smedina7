@@ -44,14 +44,14 @@ while True:
             payload = framedReceive(sock, debug)
             
             if debug:
-                #start writing that data to the file
-                f.write(payload)
                 print("rec'd: ", payload)
                 
             if not payload:
                 if debug: print("child exiting")
                 sys.exit(0)
             payload += b"!"             # make emphatic!
+            #start writing that data to the file
+            f.write(payload)
             framedSend(sock, payload, debug)
             
     f.close() #close file
