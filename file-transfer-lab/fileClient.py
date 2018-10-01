@@ -67,9 +67,13 @@ if s is None:
 ##    exit()
 
 # attempt to open file to start sending to server
-with open("test.txt", 'r') as rFile:
+with open("test.txt", 'rw') as rFile:
     for line in rFile:
-        #1 indicates the current position 
+        #1 indicates the current position
  #       sendBytes = rFile.seek(1,2)  #get the contents from the current position until 100 bytes for limit
         framedSend(s, rFile, debug)  #send
+        
+        #seek end of file to append ':' to indicate end of "message" transfer
+        rFile.seek(2) # end of file
+        rFile.write(':') 
 
