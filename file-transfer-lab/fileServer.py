@@ -68,4 +68,4 @@ while True:
             
             framedSend(sock, payload, debug)
             
- #   f.close() #close file
+    f.close() #close file
