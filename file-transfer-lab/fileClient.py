@@ -62,7 +62,7 @@ if s is None:
 userInput = input("Type in command: ")
 args = userInput.split(" ")  #store in input as list
 clientFile = args[len(args)-1] #nassuming that name of the file will always be types last
-print("Sending " clientFile "...")
+print("Sending " + clientFile + "...")
 byteL = 100
 
 #check if file exists
