@@ -49,11 +49,11 @@ while True:
                 print("rec'd: ", payload)
                 #size = 
                 
-##                while payload:
-##                    print("received:", framedReceive(s, debug))
-##                    print("Copying... " + Str.decode(payload))
-##                    f.write(Str.decode(payload))
-##                    byte = f.read(1)
+                while payload.find(b';') != -1:
+                    print("received:", framedReceive(s, debug))
+                    print("Copying... " + Str.decode(payload))
+                    f.write(Str.decode(payload))
+                    byte = f.read(1)
                 
             if not payload:
                 if debug: print("child exiting")

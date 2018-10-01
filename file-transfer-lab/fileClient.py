@@ -65,6 +65,12 @@ clientFile = args[len(args)-1] #assuming that name of the file will always be ty
 
 byteL = 100
 
+#write a delimeter char to end of file
+f = open(clientFile, "wb")
+f.seek(0,2) #go to end of file
+f.write(b';')
+f.close()
+
 #check if file exists
 if not os.path.exists(clientFile):
     print ("File %s doesn't exist! Exiting" % outputFname)
