@@ -61,8 +61,8 @@ while True:
             
             #write to file once it's done receiving
             f.write(payload)
-            print("received:", framedReceive(sock, debug))
-            print("Copying... " + Str.decode(payload))
+            #print("received:", framedReceive(sock, debug))
+            print("Copying... " + payload)
             
             payload += b"!"             # make emphatic!
             
