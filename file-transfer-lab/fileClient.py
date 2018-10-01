@@ -62,9 +62,9 @@ if s is None:
 #clientFile = sys.args[1]
 
 #check if file exists
-if not os.path.exists(test.txt):
-    print ("File %s doesn't exist! Exiting" % outputFname)
-    exit()
+##if not os.path.exists(test.txt):
+##    print ("File %s doesn't exist! Exiting" % outputFname)
+##    exit()
 
 # attempt to open file to start sending to server
 with open(test.txt, 'r') as rFile:
