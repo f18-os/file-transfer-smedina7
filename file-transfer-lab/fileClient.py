@@ -75,13 +75,11 @@ if "put" in userInput:
     
     with open(clientFile, "rb") as f: #open file to start reading and sending
         byte = f.read(1)
-        while byte != b"":
-            
-            framedSend(s, byte, debug)
-            print("Sending " + clientFile + "...")
-            print("received:", framedReceive(s, debug))
-            
-            byte = f.read(1)
+        #while byte != b"":
+        framedSend(s, byte, debug)
+        print("Sending " + clientFile + "...")
+        print("received:", framedReceive(s, debug))
+        byte = f.read(1)
     
 
           
