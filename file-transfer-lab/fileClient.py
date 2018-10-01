@@ -65,15 +65,17 @@ if s is None:
 ##if not os.path.exists(test.txt):
 ##    print ("File %s doesn't exist! Exiting" % outputFname)
 ##    exit()
+    
+f = open("test.txt",'a')
+#seek end of file to append ':' to indicate end of "message" transfer
+rFile.seek(2) # end of file
+rFile.write(':')
+f.close()
 
 # attempt to open file to start sending to server
-with open("test.txt", 'w') as rFile:
+with open("test.txt", 'r') as rFile:
     for line in rFile:
         #1 indicates the current position
  #       sendBytes = rFile.seek(1,2)  #get the contents from the current position until 100 bytes for limit
         framedSend(s, rFile, debug)  #send
-        
-        #seek end of file to append ':' to indicate end of "message" transfer
-        rFile.seek(2) # end of file
-        rFile.write(':') 
 
