@@ -37,7 +37,8 @@ while True:
         open("receivedFile.txt","w+")
         f.close()
         
-   f = open("receivedFile.txt","w")  #keep adding to the file; append until it stops receiving
+        
+    f = open("receivedFile.txt","w")  #keep adding to the file; append until it stops receiving
 
     if not os.fork():
         print("new child process handling connection from", addr)
