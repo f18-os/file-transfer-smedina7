@@ -67,7 +67,7 @@ byteL = 100
 
 #write a delimeter char to end of file
 f = open(clientFile, "a")
-f.seek(2) #go to end of file
+#f.seek(2) #go to end of file
 f.write(';')
 f.close()
 
