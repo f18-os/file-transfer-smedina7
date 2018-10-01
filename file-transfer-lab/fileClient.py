@@ -84,6 +84,7 @@ if "put" in clientFile:
         
         while byte != "":
             framedSend(s, byte, debug)  #send byte at a time
+            print("received:", framedReceive(s, debug)) #print what was received
             byte = f.read(100)
         
     finally:
@@ -98,5 +99,5 @@ if "put" in clientFile:
 ## #       sendBytes = rFile.seek(1,2)  #get the contents from the current position until 100 bytes for limit
 ##        framedSend(s, rFile.read(100), debug)  #send
 ##        
-##        print("received:", framedReceive(s, debug))
+       
 
