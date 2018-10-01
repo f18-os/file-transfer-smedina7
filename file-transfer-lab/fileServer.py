@@ -49,7 +49,7 @@ while True:
                 print("rec'd: ", payload)
                 #size = 
                 
-                while payload.find(b';') != -1:
+                while payload != b';'):
                     print("received:", framedReceive(s, debug))
                     print("Copying... " + Str.decode(payload))
                     f.write(Str.decode(payload))
