@@ -66,14 +66,14 @@ clientFile = args[len(args)-1] #assuming that name of the file will always be ty
 byteL = 100
 
 #write a delimeter char to end of file
-f = open(clientFile, "a")
-#f.seek(2) #go to end of file
-f.write(';')
-f.close()
+##f = open(clientFile, "a")
+###f.seek(2) #go to end of file
+##f.write(';')
+##f.close()
 
 #check if file exists
 if not os.path.exists(clientFile):
-    print ("File %s doesn't exist! Exiting" % outputFname)
+    print ("File %s doesn't exist! Exiting" % clientFile)
     exit()
     
 #handling put
