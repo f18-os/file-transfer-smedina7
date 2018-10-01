@@ -52,8 +52,8 @@ while True:
                     
                     while byte != b"":
                         print("received:", framedReceive(s, debug))
-                        print("Copying... " + payload.decode())
-                        f.write(payload.decode())
+                        print("Copying... " + Str.decode(payload))
+                        f.write(Str.decode(payload))
                         byte = f.read(1)
                 
             if not payload:
