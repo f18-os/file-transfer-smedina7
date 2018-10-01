@@ -62,7 +62,7 @@ if s is None:
 userInput = input("Type in command: ")
 args = userInput.split(" ")  #store in input as list
 clientFile = args[len(args)-1] #nassuming that name of the file will always be types last
-print("Sending " + clientFile + "...")
+
 byteL = 100
 
 #check if file exists
@@ -71,13 +71,14 @@ if not os.path.exists(clientFile):
     exit()
     
 #handling put
-if "put" in clientFile:
+if "put" in userInput:
     
     with open(clientFile, "rb") as f: #open file to start reading and sending
         byte = f.read(1)
         while byte != b"":
             
             framedSend(s, byte, debug)
+            print("Sending " + clientFile + "...")
             print("received:", framedReceive(s, debug))
             
             byte = f.read(1)
