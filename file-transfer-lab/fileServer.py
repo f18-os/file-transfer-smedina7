@@ -60,7 +60,7 @@ while True:
                 sys.exit(0)
             
             #write to file once it's done receiving
-            f.write(Str.decode(payload))
+            f.write(payload.decode("utf-8"))
             
             payload += b"!"             # make emphatic!
             
