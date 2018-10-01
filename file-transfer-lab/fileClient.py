@@ -68,8 +68,8 @@ if s is None:
     
 f = open("test.txt",'a')
 #seek end of file to append ':' to indicate end of "message" transfer
-rFile.seek(2) # end of file
-rFile.write(':')
+f.seek(2) # end of file
+f.write(':')
 f.close()
 
 # attempt to open file to start sending to server
