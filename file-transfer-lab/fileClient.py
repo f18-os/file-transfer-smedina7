@@ -61,7 +61,7 @@ if s is None:
 #STORE the name of the file that user wants to send
 userInput = input("Type in command: ")
 args = userInput.split(" ")  #store in input as list
-clientFile = args[len(args)-1] #nassuming that name of the file will always be types last
+clientFile = args[len(args)-1] #assuming that name of the file will always be types last
 
 byteL = 100
 

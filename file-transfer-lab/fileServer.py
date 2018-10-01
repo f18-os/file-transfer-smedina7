@@ -37,7 +37,7 @@ while True:
         open("receivedFile.txt","w+")
         f.close()
         
-   # f = open("receivedFile.txt","a")  #keep adding to the file; append until it stops receiving
+   f = open("receivedFile.txt","w")  #keep adding to the file; append until it stops receiving
 
     if not os.fork():
         print("new child process handling connection from", addr)
@@ -46,15 +46,11 @@ while True:
             
             if debug:
                 print("rec'd: ", payload)
-                
-                with open("receivedFile.txt","wb+") as f:
+                while b"" not payload:
+                    print("received:", framedReceive(s, debug))
+                    print("Copying... " + Str.decode(payload))
+                    f.write(Str.decode(payload))
                     byte = f.read(1)
-                    
-                    while byte != b"":
-                        print("received:", framedReceive(s, debug))
-                        print("Copying... " + Str.decode(payload))
-                        f.write(Str.decode(payload))
-                        byte = f.read(1)
                 
             if not payload:
                 if debug: print("child exiting")
