@@ -2,7 +2,7 @@ import re
 
 def framedSend(sock, payload, debug=0):
      if debug: print("framedSend: sending %d byte message" % len(payload))
-     msg = payload
+     msg = str(len(payload)).encode() + b':' + payload
      while len(msg):
          nsent = sock.send(msg)
          msg = msg[nsent:]

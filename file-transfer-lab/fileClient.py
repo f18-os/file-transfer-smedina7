@@ -59,23 +59,44 @@ if s is None:
 #open file to send it to server
 
 #STORE the name of the file that user wants to send
-#clientFile = sys.args[1]
+userInput = input("Type in command: ")
+args = userInput.split(" ")  #store in input as list
+clientFile = args[len(args)-1] #nassuming that ame of the file will always be types last
+byteL = 100
 
 #check if file exists
-##if not os.path.exists(test.txt):
-##    print ("File %s doesn't exist! Exiting" % outputFname)
-##    exit()
+if not os.path.exists(clientFile):
+    print ("File %s doesn't exist! Exiting" % outputFname)
+    exit()
     
-f = open("test.txt",'a')
-#seek end of file to append ':' to indicate end of "message" transfer
-f.seek(2) # end of file
-f.write(':')
-f.close()
+##f = open("test.txt",'a')
+###seek end of file to append ':' to indicate end of "message" transfer
+##f.seek(2) # end of file
+##f.write(':')
+##f.close()
 
-# attempt to open file to start sending to server
-with open("test.txt", 'r') as rFile:
-    for line in rFile:
-        #1 indicates the current position
- #       sendBytes = rFile.seek(1,2)  #get the contents from the current position until 100 bytes for limit
-        framedSend(s, rFile.read(1), debug)  #send
+#handling put
+if "put" in clientFile:
+    
+    f = open(clientFile, "rb")  #open file to start reading and sending
+    try:
+        byte = f.read(100)
+        
+    while byte != "":
+        framedSend(s, byte, debug)  #send byte at a time
+        byte = f.read(100)
+        
+    finally:
+    f.close()
+    
+    
+
+### attempt to open file to start sending to server
+##with open("test.txt", 'r') as rFile:
+##    for line in rFile:
+##        #1 indicates the current position
+## #       sendBytes = rFile.seek(1,2)  #get the contents from the current position until 100 bytes for limit
+##        framedSend(s, rFile.read(100), debug)  #send
+##        
+##        print("received:", framedReceive(s, debug))
 
