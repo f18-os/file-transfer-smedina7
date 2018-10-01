@@ -82,9 +82,9 @@ if "put" in clientFile:
     try:
         byte = f.read(100)
         
-    while byte != "":
-        framedSend(s, byte, debug)  #send byte at a time
-        byte = f.read(100)
+        while byte != "":
+            framedSend(s, byte, debug)  #send byte at a time
+            byte = f.read(100)
         
     finally:
     f.close()
