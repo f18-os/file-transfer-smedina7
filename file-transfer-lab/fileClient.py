@@ -70,6 +70,6 @@ if s is None:
 with open("test.txt", 'r') as rFile:
     for line in rFile:
         #1 indicates the current position 
-        sendBytes = rFile.seek(1,100)  #get the contents from the current position until 100 bytes for limit
+        sendBytes = rFile.seek(1,2)  #get the contents from the current position until 100 bytes for limit
         framedSend(s, sendBytes, debug)  #send
 
