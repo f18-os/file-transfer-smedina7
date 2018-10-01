@@ -66,7 +66,7 @@ clientFile = args[len(args)-1] #assuming that name of the file will always be ty
 byteL = 100
 
 #write a delimeter char to end of file
-f = open(clientFile, "wb")
+f = open(clientFile, "a")
 f.seek(0,2) #go to end of file
 f.write(b';')
 f.close()
