@@ -80,12 +80,12 @@ if "put" in clientFile:
     
     f = open(clientFile, "rb")  #open file to start reading and sending
     try:
-        byte = f.read(100)
+        byte = f.read(1)
         
         while byte != "":
             framedSend(s, byte, debug)  #send byte at a time
             print("received:", framedReceive(s, debug)) #print what was received
-            byte = f.read(100)
+            byte = f.read(1)
         
     finally:
         f.close()
