@@ -48,13 +48,6 @@ while True:
             if debug:
                 print("rec'd: ", payload)
                 
-##                while payload != b';':
-##                    print("received:", framedReceive(s, debug))
-##                    print("Copying... " + Str.decode(payload))
-##                    f.write(Str.decode(payload))
-##                    
-##                    byte = f.read(1)
-                
             if not payload:
                 if debug: print("child exiting")
                 sys.exit(0)
