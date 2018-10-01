@@ -47,7 +47,7 @@ while True:
             
             if debug:
                 print("rec'd: ", payload)
-                size = 
+                #size = 
                 
                 while payload:
                     print("received:", framedReceive(s, debug))
