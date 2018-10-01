@@ -75,7 +75,7 @@ byteL = 100
 if not os.path.exists(clientFile):
     print ("File %s doesn't exist! Exiting" % clientFile)
     exit()
-    
+
 #handling put
 if "put" in userInput:
     
