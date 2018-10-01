@@ -78,17 +78,16 @@ if not os.path.exists(clientFile):
 #handling put
 if "put" in clientFile:
     
-    f = open(clientFile, "rb")  #open file to start reading and sending
-    try:
+    with open(clientFile, "rb") as f: #open file to start reading and sending
         byte = f.read(1)
-        
-        while byte != "":
-            framedSend(s, byte, debug)  #send byte at a time
-            print("received:", framedReceive(s, debug)) #print what was received
+        while byte != b"":
+            
+            framedSend(s, byte, debug)
+            print("received:", framedReceive(s, debug))
+            
             byte = f.read(1)
-        
-    finally:
-        f.close()
+    
+
     
     
 
