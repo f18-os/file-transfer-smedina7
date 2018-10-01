@@ -65,19 +65,13 @@ clientFile = args[len(args)-1] #assuming that name of the file will always be ty
 
 byteL = 100
 
-#write a delimeter char to end of file
-##f = open(clientFile, "a")
-###f.seek(2) #go to end of file
-##f.write(';')
-##f.close()
-
-
 #check if file exists
 if not os.path.exists(clientFile):
     print ("File %s doesn't exist! Exiting" % clientFile)
     exit()
 
 #handling put
+    
 if "put" in userInput:
     
     with open(clientFile, "rb") as f: #open file to start reading and sending
@@ -90,6 +84,8 @@ if "put" in userInput:
         
         f.close() #close file once done
         
+#handling get
+        
 if "get" in userInput:
     
     if not os.path.exists("receivedFile.txt"):
@@ -97,7 +93,7 @@ if "get" in userInput:
     
     with open(clientFile, "rb") as f:       
         while True:
-            payload = framedReceive(sock, debug)
+            payload = framedReceive(s, debug)
             
             if debug:
                 print("rec'd: ", payload)
