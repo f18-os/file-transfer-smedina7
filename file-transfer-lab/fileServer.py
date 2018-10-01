@@ -46,13 +46,14 @@ while True:
             
             if debug:
                 print("rec'd: ", payload)
+                
                 with open("receivedFile.txt","wb+") as f:
                     byte = f.read(1)
                     
                     while byte != b"":
                         print("received:", framedReceive(s, debug))
-                        print("Copying... " + payload)
-                        f.write(payload)
+                        print("Copying... " + payload.decode())
+                        f.write(payload.decode())
                         byte = f.read(1)
                 
             if not payload:
