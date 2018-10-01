@@ -87,7 +87,7 @@ if "put" in clientFile:
             byte = f.read(100)
         
     finally:
-    f.close()
+        f.close()
     
     
 
