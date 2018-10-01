@@ -35,6 +35,7 @@ while True:
     #create receive file if it doesnt exist
     if not os.path.exists("receivedFile.txt"):
         open("receivedFile.txt","w+")
+        f.close()
         
     f = open("receivedFile.txt","a")  #keep adding to the file; append until it stops receiving
 
@@ -45,13 +46,12 @@ while True:
             
             if debug:
                 print("rec'd: ", payload)
+                #start writing that data to the file
+                f.write(payload)
                 
             if not payload:
                 if debug: print("child exiting")
                 sys.exit(0)
-                
-            #start writing that data to the file
-            f.write(payload)
             
             payload += b"!"             # make emphatic!
             
