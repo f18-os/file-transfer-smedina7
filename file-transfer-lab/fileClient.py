@@ -68,7 +68,7 @@ byteL = 100
 #write a delimeter char to end of file
 f = open(clientFile, "a")
 f.seek(0,2) #go to end of file
-f.write(b';')
+f.write(';')
 f.close()
 
 #check if file exists
