@@ -71,6 +71,7 @@ byteL = 100
 ##f.write(';')
 ##f.close()
 
+
 #check if file exists
 if not os.path.exists(clientFile):
     print ("File %s doesn't exist! Exiting" % clientFile)
