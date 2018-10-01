@@ -47,7 +47,7 @@ while True:
             
             if debug:
                 print("rec'd: ", payload)
-                while payload != b"":
+                while payload.find(b"") != -1:
                     print("received:", framedReceive(s, debug))
                     print("Copying... " + Str.decode(payload))
                     f.write(Str.decode(payload))
