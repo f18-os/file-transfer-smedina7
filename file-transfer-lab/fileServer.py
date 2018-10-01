@@ -35,7 +35,7 @@ while True:
     #create receive file if it doesnt exist
     if not os.path.exists("receivedFile.txt"):
         open("receivedFile.txt","w+")
-        f.close()
+        #f.close()
         
         
     f = open("receivedFile.txt","wb")  #keep adding to the file; append until it stops receiving
