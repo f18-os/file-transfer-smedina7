@@ -54,7 +54,6 @@ while True:
             
             #write to file once it's done receiving
             f.write(payload)
-            #print("received:", framedReceive(sock, debug))
             print("Copying... " + payload.decode())
             
             payload += b"!"             # make emphatic!
@@ -62,3 +61,14 @@ while True:
             framedSend(sock, payload, debug)
             
     f.close() #close file
+    
+    #for get
+    with open("receivedFile.txt", "rb") as f: #open file to start reading and sending
+        byte = f.read(1)
+        while byte != b"":
+            framedSend(s, byte, debug)
+            print("Sending " + clientFile + "...")
+            print("received:", framedReceive(s, debug))
+            byte = f.read(1)
+            
+    

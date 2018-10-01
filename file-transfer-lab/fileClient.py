@@ -89,6 +89,31 @@ if "put" in userInput:
             byte = f.read(1)
         
         f.close() #close file once done
+        
+if "get" in userInput:
+    
+    if not os.path.exists("receivedFile.txt"):
+        open("receivedFile.txt","w+")
+    
+    with open(clientFile, "rb") as f:       
+        while True:
+            payload = framedReceive(sock, debug)
+            
+            if debug:
+                print("rec'd: ", payload)
+                
+            if not payload:
+                if debug: print("child exiting")
+                sys.exit(0)
+            
+            #write to file once it's done receiving
+            f.write(payload)
+            print("Copying... " + payload.decode())
+            
+            payload += b"!"             # make emphatic!
+            
+            framedSend(sock, payload, debug)
+        
     
 
           
