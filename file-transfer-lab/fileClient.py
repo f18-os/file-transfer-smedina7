@@ -82,7 +82,7 @@ if put:
             byte = f.read(100)
         
         f.close() #close file once done
-        
+    
 #handling get       
 if get:
     

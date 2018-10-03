@@ -67,8 +67,7 @@ while True:
                     while byte != b"":
                         framedSend(s, byte, debug)
                         print("received:", framedReceive(s, debug))
-                        byte = f.read(100)               
-                
+                        byte = f.read(100)                              
                 
             f.write(payload)
             print("Copying... " + payload.decode())
