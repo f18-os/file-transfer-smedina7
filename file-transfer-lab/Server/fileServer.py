@@ -61,8 +61,7 @@ while True:
                     print("File %s already exists! Exiting...", payload.decode())
                     sys.exit(0)
                 #open file once done
-            
-            f = open(payload,"wb")
+                f = open(payload,"wb")
                 
             #check if get has been called
 ##            if b"get:" in payload:
