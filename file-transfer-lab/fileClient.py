@@ -70,7 +70,7 @@ if put:
         exit()
     
     #send name of file first to create/copy the same file name
-    framedSend(s, clientFile, debug)
+    #framedSend(s, clientFile, debug)
     
     with open(clientFile, "rb") as f: #open file to start reading and sending
         byte = f.read(100)
