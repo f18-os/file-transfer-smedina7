@@ -32,13 +32,6 @@ while True:
 
     from framedSock import framedSend, framedReceive
     
-##    #create receive file if it doesnt exist
-##    if not os.path.exists("receivedFile.txt"):
-##        open("receivedFile.txt","w+")
-##        #f.close()
-        
-        
-   # f = open("receivedFile.txt","wb")  #keep adding to the file; append until it stops receiving
 
     if not os.fork():
         print("new child process handling connection from", addr)
@@ -58,21 +51,12 @@ while True:
                 if not os.path.exists(payload):
                     open(payload,"w+")
                 else:
-                    print("File %s already exists! Exiting...", payload.decode())
-                    sys.exit(0)
+                    error = print("File %s already exists! Exiting...", payload.decode())
+                    framedSend(sock, error.encode(), debug)
+                    sys.exit(1)
                 #open file once done
                 f = open(payload,"wb")
-                
-            #check if get has been called
-##            if b"get:" in payload:
-##                with open(clientFile, "rb") as f: #open file to start reading and sending
-##                    byte = f.read(100)
-##                    while byte != b"":
-##                        framedSend(s, byte, debug)
-##                        print("received:", framedReceive(s, debug))
-##                        byte = f.read(100)
             
-                
             f.write(payload)
             print("Copying... " + payload.decode())
             
