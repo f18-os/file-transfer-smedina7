@@ -32,13 +32,13 @@ while True:
 
     from framedSock import framedSend, framedReceive
     
-    #create receive file if it doesnt exist
-    if not os.path.exists("receivedFile.txt"):
-        open("receivedFile.txt","w+")
-        #f.close()
+##    #create receive file if it doesnt exist
+##    if not os.path.exists("receivedFile.txt"):
+##        open("receivedFile.txt","w+")
+##        #f.close()
         
         
-    f = open("receivedFile.txt","wb")  #keep adding to the file; append until it stops receiving
+   # f = open("receivedFile.txt","wb")  #keep adding to the file; append until it stops receiving
 
     if not os.fork():
         print("new child process handling connection from", addr)
@@ -53,6 +53,13 @@ while True:
                 sys.exit(0)
             
             #write to file once it's done receiving
+            if ".txt" in payload:
+                #save name of file to create/copy file: and later append
+                if not os.path.exists(payload):
+                    open(payload,"w+")
+                else:
+                    f = open(payload,"wb") 
+                
             f.write(payload)
             print("Copying... " + payload.decode())
             
