@@ -2,7 +2,7 @@
 
 import sys
 
-sys.path.append("../lib")       # for params
+sys.path.append("../../lib")    # for params
 
 import os, socket, params
 
@@ -57,8 +57,12 @@ while True:
                 #save name of file to create/copy file: and later append
                 if not os.path.exists(payload):
                     open(payload,"a+")
+                else:
+                    print("File %s already exists! Exiting...", payload.decode())
+                    sys.exit(0)
                 #open file once done
-                f = open(payload,"ab")
+            
+            f = open(payload,"ab")
                 
             #check if get has been called
 ##            if b"get:" in payload:
