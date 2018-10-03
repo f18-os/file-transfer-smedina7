@@ -84,26 +84,26 @@ if put:
         f.close() #close file once done
         
 #handling get       
-if get:
-    
-    if not os.path.exists("receivedFile.txt"):
-        open("receivedFile.txt","w+")
-    
-    with open(clientFile, "rb") as f:       
-        while True:
-            payload = framedReceive(s, debug)
-            
-            if debug:
-                print("rec'd: ", payload)
-                
-            if not payload:
-                if debug: print("child exiting")
-                sys.exit(0)
-            
-            #write to file once it's done receiving
-            f.write(payload)
-            print("Copying... " + payload.decode())
-            
-            payload += b"!"             # make emphatic!
-            
-            framedSend(sock, payload, debug)
+##if get:
+##    
+##    if not os.path.exists("receivedFile.txt"):
+##        open("receivedFile.txt","w+")
+##    
+##    with open(clientFile, "rb") as f:       
+##        while True:
+##            payload = framedReceive(s, debug)
+##            
+##            if debug:
+##                print("rec'd: ", payload)
+##                
+##            if not payload:
+##                if debug: print("child exiting")
+##                sys.exit(0)
+##            
+##            #write to file once it's done receiving
+##            f.write(payload)
+##            print("Copying... " + payload.decode())
+##            
+##            payload += b"!"             # make emphatic!
+##            
+##            framedSend(sock, payload, debug)
