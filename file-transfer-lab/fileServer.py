@@ -53,7 +53,7 @@ while True:
                 sys.exit(0)
             
             #write to file once it's done receiving
-            if ".txt" in payload:
+            if b".txt" in payload:
                 #save name of file to create/copy file: and later append
                 if not os.path.exists(payload):
                     open(payload,"w+")
@@ -67,7 +67,7 @@ while True:
             
             framedSend(sock, payload, debug)
             
-    f.close() #close file
+ #   f.close() #close file
     
     #for get
 ##    with open("receivedFile.txt", "rb") as f: #open file to start reading and sending
