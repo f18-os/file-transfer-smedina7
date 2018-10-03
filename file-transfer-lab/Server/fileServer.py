@@ -56,13 +56,13 @@ while True:
             if b".txt" in payload:
                 #save name of file to create/copy file: and later append
                 if not os.path.exists(payload):
-                    open(payload,"a+")
+                    open(payload,"w+")
                 else:
                     print("File %s already exists! Exiting...", payload.decode())
                     sys.exit(0)
                 #open file once done
             
-            f = open(payload,"ab")
+            f = open(payload,"wb")
                 
             #check if get has been called
 ##            if b"get:" in payload:
