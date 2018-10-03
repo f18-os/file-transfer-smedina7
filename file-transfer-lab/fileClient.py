@@ -13,8 +13,8 @@ switchesVarDefaults = (
     (('-s', '--server'), 'server', "127.0.0.1:50001"),
     (('-d', '--debug'), "debug", False), # boolean (set if present)
     (('-?', '--usage'), "usage", False), # boolean (set if present)
-    (('-p', '--put'), 'put', type=argparse.FileType('wb', 0)),
-    (('-g', '--get'), 'get', type=argparse.FileType('wb', 0)),
+    (('-p', '--put'), 'put', "fileDoesNotExist.txt"),
+    (('-g', '--get'), 'get', "fileDoesNotExist.txt"),
     )
 
 
