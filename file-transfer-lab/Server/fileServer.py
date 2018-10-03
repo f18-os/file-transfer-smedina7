@@ -51,10 +51,10 @@ while True:
                 if not os.path.exists(payload):
                     open(payload,"w+")
                 else:
-                    error = print("File %s already exists! Exiting...", payload.decode())
-                    framedSend(sock, error.encode(), debug)
-                    sys.exit(1)
+                    framedSend(sock, b"Error: File already exists in server", debug)
+                    sys.exit()
                 #open file once done
+                
                 f = open(payload,"wb")
             
             f.write(payload)
