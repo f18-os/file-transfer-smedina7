@@ -84,42 +84,42 @@ if put:
         f.close() #close file once done
     
 #handling get       
-if get:
-    
-    #let server know get has been called
-    framedSend(s, b"get:", debug)
-    
-    split = re.split('get', get)
-    clientFile = split[0]
-    
-    if not os.path.exists(clientFile):
-        print ("File %s doesn't exist! Exiting" % clientFile)
-        exit()
-        
-    #send file name to open
-    print("Sending " + clientFile + "...")
-    framedSend(s, clientFile.encode(), debug)
-    
-    while True:
-        payload = framedReceive(sock, debug)
-        if debug:
-            print("rec'd: ", payload)
-                
-        if not payload:
-            if debug: print("child exiting")
-            sys.exit(0)
-            
-        #write to file once it's done receiving
-        if b".txt" in payload:
-            #save name of file to create/copy file: and later append
-            if not os.path.exists(payload):
-                open(payload,"a+")
-            #open file once done
-            f = open(payload,"ab")
-            
-        f.write(payload)
-        print("Copying... " + payload.decode())
-        
-        payload += b"!"             # make emphatic!
-            
-        framedSend(s, payload, debug)
+##if get:
+##    
+##    #let server know get has been called
+##    framedSend(s, b"get:", debug)
+##    
+##    split = re.split('get', get)
+##    clientFile = split[0]
+##    
+##    if not os.path.exists(clientFile):
+##        print ("File %s doesn't exist! Exiting" % clientFile)
+##        exit()
+##        
+##    #send file name to open
+##    print("Sending " + clientFile + "...")
+##    framedSend(s, clientFile.encode(), debug)
+##    
+##    while True:
+##        payload = framedReceive(sock, debug)
+##        if debug:
+##            print("rec'd: ", payload)
+##                
+##        if not payload:
+##            if debug: print("child exiting")
+##            sys.exit(0)
+##            
+##        #write to file once it's done receiving
+##        if b".txt" in payload:
+##            #save name of file to create/copy file: and later append
+##            if not os.path.exists(payload):
+##                open(payload,"a+")
+##            #open file once done
+##            f = open(payload,"ab")
+##            
+##        f.write(payload)
+##        print("Copying... " + payload.decode())
+##        
+##        payload += b"!"             # make emphatic!
+##            
+##        framedSend(s, payload, debug)

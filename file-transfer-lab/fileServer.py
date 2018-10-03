@@ -61,13 +61,14 @@ while True:
                 f = open(payload,"ab")
                 
             #check if get has been called
-            if b"get:" in payload:
-                with open(clientFile, "rb") as f: #open file to start reading and sending
-                    byte = f.read(100)
-                    while byte != b"":
-                        framedSend(s, byte, debug)
-                        print("received:", framedReceive(s, debug))
-                        byte = f.read(100)                              
+##            if b"get:" in payload:
+##                with open(clientFile, "rb") as f: #open file to start reading and sending
+##                    byte = f.read(100)
+##                    while byte != b"":
+##                        framedSend(s, byte, debug)
+##                        print("received:", framedReceive(s, debug))
+##                        byte = f.read(100)
+            
                 
             f.write(payload)
             print("Copying... " + payload.decode())
@@ -75,17 +76,5 @@ while True:
             payload += b"!"             # make emphatic!
             
             framedSend(sock, payload, debug)
-            
- #   f.close() #close file
-    
-    #for get
-##    with open("receivedFile.txt", "rb") as f: #open file to start reading and sending
-##        byte = f.read(1)
-##        while byte != b"":
-##            framedSend(s, byte, debug)
-##            print("Sending " + clientFile + "...")
-##            print("received:", framedReceive(s, debug))
-##            byte = f.read(1)
-##            
-            
+                       
     
