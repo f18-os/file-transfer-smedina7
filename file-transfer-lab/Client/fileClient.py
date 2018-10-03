@@ -20,7 +20,7 @@ switchesVarDefaults = (
 progname = "fileClient"
 paramMap = params.parseParams(switchesVarDefaults)
 
-server, usage, debug, put, get  = paramMap["server"], paramMap["usage"], paramMap["debug"], paramMap['put'], paramMap['get']
+server, usage, debug, put  = paramMap["server"], paramMap["usage"], paramMap["debug"], paramMap['put']
 
 if usage:
     params.usage()
