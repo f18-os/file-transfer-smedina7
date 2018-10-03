@@ -13,8 +13,8 @@ switchesVarDefaults = (
     (('-s', '--server'), 'server', "127.0.0.1:50001"),
     (('-d', '--debug'), "debug", False), # boolean (set if present)
     (('-?', '--usage'), "usage", False), # boolean (set if present)
-    (('-p', '--put'), 'put', "fileDoesNotExist.txt"),
-    (('-g', '--get'), 'get', "fileDoesNotExist.txt"),
+    (('-p', '--put'), 'put', "fileName.txt"),
+    (('-g', '--get'), 'get', "fileName.txt"),
     )
 
 
@@ -70,13 +70,14 @@ if put:
         exit()
     
     #send name of file first to create/copy the same file name
-    #framedSend(s, clientFile, debug)
+    print("Sending " + clientFile + "...")
+    framedSend(s, clientFile.encode(), debug)
     
     with open(clientFile, "rb") as f: #open file to start reading and sending
         byte = f.read(100)
         while byte != b"":
             framedSend(s, byte, debug)
-            print("Sending " + clientFile + "...")
+            
             print("received:", framedReceive(s, debug))
             byte = f.read(100)
         
