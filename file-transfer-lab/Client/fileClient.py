@@ -79,6 +79,7 @@ if put:
             
             #if received message is error exit
             if(framedReceive(s, debug).decode() == "Error: File already exists in server"):
+                print(framedReceive(s, debug).decode())
                 sys.exit(1)
             
             print("received:", framedReceive(s, debug))
