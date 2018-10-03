@@ -71,4 +71,5 @@ while True:
             print("received:", framedReceive(s, debug))
             byte = f.read(1)
             
+            
     
