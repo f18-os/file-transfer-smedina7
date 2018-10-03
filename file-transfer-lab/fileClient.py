@@ -62,7 +62,8 @@ if s is None:
 if put:
     
     #store name of file
-    clientFile = re.split('put', put)
+    split = re.split('put', put)
+    clientFile = split[1]
     #check if file exists first
     if not os.path.exists(clientFile):
         print ("File %s doesn't exist! Exiting" % clientFile)
