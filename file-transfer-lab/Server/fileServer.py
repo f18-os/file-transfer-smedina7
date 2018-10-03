@@ -50,9 +50,8 @@ while True:
                 #save name of file to create/copy file: and later append
                 if os.path.exists(payload):
                     framedSend(sock, b"Error: File already exists in server", debug)
-                    sys.exit()
+                    sys.exit(0)
                 #open file once done
-                
                 f = open(payload,"wb")
             
             f.write(payload)

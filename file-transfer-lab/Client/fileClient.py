@@ -14,7 +14,6 @@ switchesVarDefaults = (
     (('-d', '--debug'), "debug", False), # boolean (set if present)
     (('-?', '--usage'), "usage", False), # boolean (set if present)
     (('-p', '--put'), 'put', "fileName.txt"),
-    (('-g', '--get'), 'get', "fileName.txt"),
     )
 
 
@@ -67,7 +66,7 @@ if put:
     #check if file exists first
     if not os.path.exists(clientFile):
         print ("File %s doesn't exist! Exiting" % clientFile)
-        exit(1)
+        sys.exit(1)
     
     #send name of file first to create/copy the same file name
     print("Sending " + clientFile + "...")
@@ -78,8 +77,14 @@ if put:
         while byte != b"":
             framedSend(s, byte, debug)
             
+            #if received message is error exit
+            if(framedReceive(s, debug).decode() == "Error: File already exists in server"):
+                sys.exit(1)
+            
             print("received:", framedReceive(s, debug))
             byte = f.read(100)
+            
+            
             
  #       framedSend(s, b'Done Transferring File', debug)
         
