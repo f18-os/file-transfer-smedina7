@@ -21,7 +21,7 @@ switchesVarDefaults = (
 progname = "fileClient"
 paramMap = params.parseParams(switchesVarDefaults)
 
-server, usage, debug  = paramMap["server"], paramMap["usage"], paramMap["debug"], paramMap['put'], paramMap['get']
+server, usage, debug, put, get  = paramMap["server"], paramMap["usage"], paramMap["debug"], paramMap['put'], paramMap['get']
 
 if usage:
     params.usage()
@@ -60,7 +60,7 @@ if s is None:
 
 #handling put
     
-if paramMap['put']:
+if put:
     
     #check if file exists first
     clientFile = sys.arg[2]
@@ -84,7 +84,7 @@ if paramMap['put']:
         
 #handling get
         
-if paramMap['get']:
+if get:
     
     if not os.path.exists("receivedFile.txt"):
         open("receivedFile.txt","w+")
