@@ -13,13 +13,15 @@ switchesVarDefaults = (
     (('-s', '--server'), 'server', "127.0.0.1:50001"),
     (('-d', '--debug'), "debug", False), # boolean (set if present)
     (('-?', '--usage'), "usage", False), # boolean (set if present)
+    (('-p', '--put'), "put", False),
+    (('-g', '--get'), "get", False),
     )
 
 
 progname = "fileClient"
 paramMap = params.parseParams(switchesVarDefaults)
 
-server, usage, debug  = paramMap["server"], paramMap["usage"], paramMap["debug"]
+server, usage, debug  = paramMap["server"], paramMap["usage"], paramMap["debug"], paramMap['put'], paramMap['get']
 
 if usage:
     params.usage()
@@ -56,23 +58,19 @@ if s is None:
     print('could not open socket')
     sys.exit(1)
 
-#open file to send it to server
-
-#STORE the name of the file that user wants to send
-userInput = input("Type in command: ")
-args = userInput.split(" ")  #store in input as list
-clientFile = args[len(args)-1] #assuming that name of the file will always be types last
-
-byteL = 100
-
-#check if file exists
-if not os.path.exists(clientFile):
-    print ("File %s doesn't exist! Exiting" % clientFile)
-    exit()
-
 #handling put
     
-if "put" in userInput:
+if paramMap['put']:
+    
+    #check if file exists first
+    clientFile = sys.arg[2]
+    
+    if not os.path.exists(clientFile):
+        print ("File %s doesn't exist! Exiting" % clientFile)
+        exit()
+    
+    #send name of file first to create/copy the same file name
+    framedSend(s, clientFile, debug)
     
     with open(clientFile, "rb") as f: #open file to start reading and sending
         byte = f.read(100)
@@ -86,7 +84,7 @@ if "put" in userInput:
         
 #handling get
         
-if "get" in userInput:
+if paramMap['get']:
     
     if not os.path.exists("receivedFile.txt"):
         open("receivedFile.txt","w+")
