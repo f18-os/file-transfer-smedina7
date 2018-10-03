@@ -80,5 +80,7 @@ if put:
             
             print("received:", framedReceive(s, debug))
             byte = f.read(100)
+            
+ #       framedSend(s, b'Done Transferring File', debug)
         
         f.close() #close file once done
