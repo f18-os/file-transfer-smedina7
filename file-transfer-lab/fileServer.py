@@ -57,8 +57,8 @@ while True:
                 #save name of file to create/copy file: and later append
                 if not os.path.exists(payload):
                     open(payload,"w+")
-                else:
-                    f = open(payload,"wb") 
+                #open file once done
+                f = open(payload,"wb") 
                 
             f.write(payload)
             print("Copying... " + payload.decode())
