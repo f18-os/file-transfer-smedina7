@@ -13,8 +13,8 @@ switchesVarDefaults = (
     (('-s', '--server'), 'server', "127.0.0.1:50001"),
     (('-d', '--debug'), "debug", False), # boolean (set if present)
     (('-?', '--usage'), "usage", False), # boolean (set if present)
-    (('-p', '--put'), "put", False),
-    (('-g', '--get'), "get", False),
+    (('-p', '--put'), 'put', type=argparse.FileType('wb', 0)),
+    (('-g', '--get'), 'get', type=argparse.FileType('wb', 0)),
     )
 
 
@@ -58,8 +58,7 @@ if s is None:
     print('could not open socket')
     sys.exit(1)
 
-#handling put
-    
+#handling put  
 if put:
     
     #check if file exists first
@@ -82,8 +81,7 @@ if put:
         
         f.close() #close file once done
         
-#handling get
-        
+#handling get       
 if get:
     
     if not os.path.exists("receivedFile.txt"):
@@ -107,9 +105,3 @@ if get:
             payload += b"!"             # make emphatic!
             
             framedSend(sock, payload, debug)
-        
-    
-
-          
-          
-
