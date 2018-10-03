@@ -6,7 +6,7 @@ def framedSend(sock, payload, debug=0):
      while len(msg):
          nsent = sock.send(msg)
          msg = msg[nsent:]
-     
+         
 rbuf = b""                      # static receive buffer
 
 def framedReceive(sock, debug=0):
