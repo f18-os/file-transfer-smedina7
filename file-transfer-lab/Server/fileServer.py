@@ -53,7 +53,8 @@ while True:
                     sys.exit(1)
                 #open file if it doesnt exist
                 f = open(payload,"wb")
-            
+                
+            while(payload != b'Done Transferring File')
             f.write(payload)
             print("Copying... " + payload.decode())
             
