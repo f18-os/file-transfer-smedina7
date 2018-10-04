@@ -55,11 +55,11 @@ while True:
                 f = open(payload,"wb")
                 
             while(payload != b'Done Transferring File'):
-            f.write(payload)
-            print("Copying... " + payload.decode())
-            
-            payload += b"!"             # make emphatic!
-            
+                f.write(payload)
+                print("Copying... " + payload.decode())
+                payload += b"!"             # make emphatic!
+                
+            f.close()
             framedSend(sock, payload, debug)
                        
     
