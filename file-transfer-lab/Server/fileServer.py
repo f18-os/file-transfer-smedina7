@@ -48,8 +48,8 @@ while True:
             #write to file once it's done receiving
             if b".txt" in payload:
                 #check if file exists
-##                if os.path.exists(payload):
-##                    framedSend(sock, b"Error: File already exists in server", debug)
+               if os.path.exists(payload):
+                    framedSend(sock, b"Error: File already exists in server", debug)
 ##                    sys.exit(1)
                 #open file if it doesnt exist
                 f = open(payload,"wb")
