@@ -78,15 +78,15 @@ if put:
             framedSend(s, byte, debug)
             
             #if received message is error exit
-            if(framedReceive(s, debug).decode() == "Error: File already exists in server"):
-                print("Error: File already exists in server")
-                sys.exit(1)
+##            if(framedReceive(s, debug).decode() == "Error: File already exists in server"):
+##                print("Error: File already exists in server")
+##                sys.exit(1)
             
             print("received:", framedReceive(s, debug))
             byte = f.read(100)
             
             
             
-        framedSend(s, b'Done Transferring File', debug)
+        #framedSend(s, b'Done Transferring File', debug)
         
         f.close() #close file once done
