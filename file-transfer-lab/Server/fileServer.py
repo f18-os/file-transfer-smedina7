@@ -49,12 +49,14 @@ while True:
                 #save name of file to create/copy file: and later append
                 if not os.path.exists(payload):
                     open(payload,"w+")
-                #write to file once it's done receiving
-                #the first receive will be file name
-                file = payload.decode()
-                framedSend(sock, file.encode(), debug)
-                #if file doesn't exist then open file
-                f = open(file,"wb")
+                
+                 #if file doesn't exist then open file
+                 f = open(payload,"wb")
+                
+            #write to file once it's done receiving
+            #the first receive will be file name                   
+##            file = payload.decode()
+##            framedSend(sock, file.encode(), debug)
             
             #check if file exists with server
 ##            if os.path.exists(file):
@@ -63,12 +65,9 @@ while True:
 ##                #exit if file exists
 ##                sys.exit(1)
             
-           
-            
             #start receiving and copying file
-            copy = framedReceive(sock, debug)
-            print("Copying... " + copy.decode())
-            f.write(copy)
+            print("Copying... " + payload.decode())
+            f.write(payload)
             
             framedSend(sock, payload, debug)
                        
