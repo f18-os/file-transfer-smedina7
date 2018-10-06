@@ -62,7 +62,6 @@ while True:
             copy = framedReceive(sock, debug)
             print("Copying... " + copy.decode())
             f.write(copy)
-            f.close()
             framedSend(sock, payload, debug)
                        
     
