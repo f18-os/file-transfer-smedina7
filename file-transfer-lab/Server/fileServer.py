@@ -48,21 +48,17 @@ while True:
             if b".txt" in payload:
                 #save name of file to create/copy file: and later append
                 if not os.path.exists(payload):
-                    open(payload,"w+")
+                    print("ERROR File already exists... Exiting.")
+                    framedSend(sock, b"ERROR File already exists... Exiting.", debug)
+                    #exit if file exists
+                    sys.exit(1)
+                    
                 #if file doesn't exist then open file
                 f = open(payload,"wb")
-                
-            #write to file once it's done receiving
-            #the first receive will be file name                   
-##            file = payload.decode()
-##            framedSend(sock, file.encode(), debug)
             
-            #check if file exists with server
+##            #check if file exists with server
 ##            if os.path.exists(file):
-##                print("ERROR File already exists... Exiting.")
-##                framedSend(sock, b"ERROR File already exists... Exiting.", debug)
-##                #exit if file exists
-##                sys.exit(1)
+                
             
             #start receiving and copying file
             print("Copying... " + payload.decode())
