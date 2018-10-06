@@ -52,14 +52,10 @@ while True:
                     framedSend(sock, b"ERROR File already exists... Exiting.", debug)
                     #exit if file exists
                     sys.exit()
-                    
+                framedSend(sock, b"Ready", debug)    
                 #if file doesn't exist then open file
                 f = open(payload,"wb")
-            
-##            #check if file exists with server
-##            if os.path.exists(file):
-                
-            
+                                    
             #start receiving and copying file
             print("Copying... " + payload.decode())
             f.write(payload)
