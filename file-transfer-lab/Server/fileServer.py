@@ -49,9 +49,8 @@ while True:
                 #save name of file to create/copy file: and later append
                 if not os.path.exists(payload):
                     open(payload,"w+")
-                
-                 #if file doesn't exist then open file
-                 f = open(payload,"wb")
+                #if file doesn't exist then open file
+                f = open(payload,"wb")
                 
             #write to file once it's done receiving
             #the first receive will be file name                   
