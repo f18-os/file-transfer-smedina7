@@ -52,7 +52,7 @@ while True:
             #check if file exists with server
             if os.path.exists(file):
                 print("ERROR File already exists... Exiting.")
-                framedSend(sock, b"ERROR File already exists... Exiting.", debub)
+                framedSend(sock, b"ERROR File already exists... Exiting.", debug)
                 #exit if file exists
                 sys.exit(1)                      
             
