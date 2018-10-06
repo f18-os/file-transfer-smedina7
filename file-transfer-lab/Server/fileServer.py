@@ -46,15 +46,25 @@ while True:
                 sys.exit(0)
             
             #write to file once it's done receiving
-            if b".txt" in payload:
-                #check if file exists
-##                if os.path.exists(payload):
-##                    framedSend(sock, b"Error: File already exists in server", debug)
-##                    sys.exit(1)
-                #open file if it doesnt exist
-                f = open(payload,"wb")
+            #the first receive will be file name
+            file = payload.decode()
             
-            f.write(payload)
+            #check if file exists with server
+            if os.path.exists(file):
+                print("ERROR File already exists... Exiting.")
+                framedSend(sock, b"ERROR File already exists... Exiting.", debub)
+                #exit if file exists
+                sys.exit(1)                      
+            
+            #if file doesn't exist then open file
+            f = open(file,"wb")
+            #let client know you are receiving the file
+            framedSend(sock, b"Receiving file", debub)
+            
+            #start receiving file
+            copy = framedReceive(sock, debug)
+            
+            f.write(copy)
             print("Copying... " + payload.decode())
             
             payload += b"!"             # make emphatic!
