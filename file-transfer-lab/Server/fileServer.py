@@ -50,11 +50,11 @@ while True:
             file = payload.decode()
             
             #check if file exists with server
-##            if os.path.exists(file):
-##                print("ERROR File already exists... Exiting.")
-##                framedSend(sock, b"ERROR File already exists... Exiting.", debug)
-##                #exit if file exists
-##                sys.exit(1)                      
+            if os.path.exists(file):
+                print("ERROR File already exists... Exiting.")
+                framedSend(sock, b"ERROR File already exists... Exiting.", debug)
+                #exit if file exists
+                sys.exit(1)                      
             
             #if file doesn't exist then open file
             f = open(file,"wb")
