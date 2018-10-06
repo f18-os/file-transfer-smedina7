@@ -68,8 +68,9 @@ if put:
         sys.exit(1)
     
     #send name of file first to create/copy the same file name
-    print("Sending " + clientFile + "...")
     framedSend(s, clientFile.encode(), debug)
+    print("Sending ", framedReceive(s,debug))
+    
     
     f = open(clientFile, "rb")  #open file to start reading and sending
     byte = f.read(100)
