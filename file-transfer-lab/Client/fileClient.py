@@ -85,5 +85,5 @@ if put:
             
         #let server know that file has been done transferring               
         framedSend(s, b"Done Transferring File", debug)
-        
+        print("received:", framedReceive(s, debug))
         f.close() #close file once done
