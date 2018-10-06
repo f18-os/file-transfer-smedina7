@@ -76,9 +76,9 @@ if put:
         while byte != b"":
             framedSend(s, byte, debug)
             
-            #if you receive error message from server
-            if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
-                sys.exit(1)
+##            #if you receive error message from server
+##            if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
+##                sys.exit(1)
             
             print("received:", framedReceive(s, debug))
             byte = f.read(100)
