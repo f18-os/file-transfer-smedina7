@@ -44,16 +44,19 @@ while True:
             if not payload:
                 if debug: print("child exiting")
                 sys.exit(0)
+                
+            if ".txt" in payload:
+                #save name of file to create/copy file: and later append
+                if not os.path.exists(payload):
+                    open(payload,"w+")
             
             #write to file once it's done receiving
             #the first receive will be file name
             file = payload.decode()
             framedSend(sock, file.encode(), debug)
             
-            if ".txt" in file:
-                #save name of file to create/copy file: and later append
-                if not os.path.exists(file):
-                    open(payload,"w+")
+            #if file doesn't exist then open file
+            f = open(file,"wb")
             
             #check if file exists with server
 ##            if os.path.exists(file):
@@ -62,8 +65,7 @@ while True:
 ##                #exit if file exists
 ##                sys.exit(1)
             
-            #if file doesn't exist then open file
-            f = open(file,"wb")
+           
             
             #start receiving and copying file
             copy = framedReceive(sock, debug)
