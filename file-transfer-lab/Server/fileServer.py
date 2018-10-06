@@ -47,6 +47,7 @@ while True:
             #write to file once it's done receiving
             #the first receive will be file name
             file = payload.decode()
+            framedSend(sock, file.encode(), debug)
             
             #check if file exists with server
             if os.path.exists(file):
@@ -54,8 +55,6 @@ while True:
                 framedSend(sock, b"ERROR File already exists... Exiting.", debug)
                 #exit if file exists
                 sys.exit(1)
-            
-            framedSend(sock, payload, debug)
             
             #if file doesn't exist then open file
             f = open(file,"wb")
