@@ -66,6 +66,7 @@ while True:
             while(copy.decode() != "Done Transferring File"):
                 f.write(copy)
                 print("Copying... " + payload.decode())
+                copy = framedReceive(sock, debug)
             
             #payload += b"!"             # make emphatic!
             
