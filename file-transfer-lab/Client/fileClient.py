@@ -57,7 +57,7 @@ if s is None:
     print('could not open socket')
     sys.exit(1)
 
-#handling put  
+#handling put
 if put:
     
     #store name of file
