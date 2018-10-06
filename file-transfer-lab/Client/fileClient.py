@@ -71,13 +71,15 @@ if put:
     framedSend(s, clientFile.encode(), debug)
     print("Sending ", framedReceive(s,debug))
     
+    #if error is received 
+    if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
+        sys.exit(1)
+    
     f = open(clientFile, "rb")  #open file to start reading and sending
     byte = f.read(100)
     while(byte):
         framedSend(s, byte, debug)
         #if you receive error message from server
-##        if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
-##            sys.exit(1)
     
         print("Sending:", framedReceive(s, debug))
         byte = f.read(100)
