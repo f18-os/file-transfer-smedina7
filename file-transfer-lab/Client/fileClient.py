@@ -73,7 +73,7 @@ if put:
     
     f = (clientFile, "rb")  #open file to start reading and sending
     byte = f.read(100)
-    while byte != b"":
+    while(f):
         framedSend(s, byte, debug)
         #if you receive error message from server
         if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
