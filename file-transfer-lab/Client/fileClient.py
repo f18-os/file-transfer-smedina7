@@ -81,8 +81,9 @@ if put:
                 #if you receive error message from server
                 if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
                     sys.exit(1)
-           print("received:", framedReceive(s, debug))
-           byte = f.read(100)
+                
+                print("received:", framedReceive(s, debug))
+                byte = f.read(100)
             
         #let server know that file has been done transferring               
         framedSend(s, b"Done Transferring File", debug)
