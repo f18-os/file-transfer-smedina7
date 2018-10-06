@@ -59,7 +59,7 @@ while True:
             #if file doesn't exist then open file
             f = open(file,"wb")
             #let client know you are receiving the file
-            framedSend(sock, b"Receiving file", debub)
+            framedSend(sock, b"Receiving file", debug)
             
             #start receiving file
             copy = framedReceive(sock, debug)
