@@ -52,7 +52,7 @@ while True:
             
             if ".txt" in file:
                 #save name of file to create/copy file: and later append
-                if not os.path.exists(payload):
+                if not os.path.exists(file):
                     open(payload,"w+")
             
             #check if file exists with server
