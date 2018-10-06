@@ -53,7 +53,9 @@ while True:
                 print("ERROR File already exists... Exiting.")
                 framedSend(sock, b"ERROR File already exists... Exiting.", debug)
                 #exit if file exists
-                sys.exit(1)                      
+                sys.exit(1)
+            
+            framedSend(sock, payload, debug)
             
             #if file doesn't exist then open file
             f = open(file,"wb")
@@ -62,6 +64,6 @@ while True:
             copy = framedReceive(sock, debug)
             print("Copying... " + copy.decode())
             f.write(copy)
-            framedSend(sock, payload, debug)
+            framedSend(sock, copy, debug)
                        
     
