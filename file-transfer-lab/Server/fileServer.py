@@ -47,7 +47,7 @@ while True:
                 
             if b".txt" in payload:
                 #save name of file to create/copy file: and later append
-                if not os.path.exists(payload):
+                if os.path.exists(payload):
                     print("ERROR File already exists... Exiting.")
                     framedSend(sock, b"ERROR File already exists... Exiting.", debug)
                     #exit if file exists
