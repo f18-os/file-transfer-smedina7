@@ -69,11 +69,13 @@ if put:
     
     #send name of file first to create/copy the same file name
     framedSend(s, clientFile.encode(), debug)
-    print("Sending ", framedReceive(s,debug))
     
     #if error is received 
     if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
         sys.exit(1)
+    
+    print("Sending ", framedReceive(s,debug))
+    
     
     f = open(clientFile, "rb")  #open file to start reading and sending
     byte = f.read(100)
