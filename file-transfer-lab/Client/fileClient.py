@@ -70,16 +70,16 @@ if put:
     #send name of file first to create/copy the same file name
     print("Sending " + clientFile + "...")
     framedSend(s, clientFile.encode(), debug)
-    with open(clientFile, "rb") as f: #open file to start reading and sending
+    
+    f = (clientFile, "rb")  #open file to start reading and sending
+    byte = f.read(100)
+    while byte != b"":
+        framedSend(s, byte, debug)
+        #if you receive error message from server
+        if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
+            sys.exit(1)
+        print("received:", framedReceive(s, debug))
         byte = f.read(100)
-        while byte != b"":
-            framedSend(s, byte, debug)
-            #if you receive error message from server
-            if(framedReceive(s,debug) == b"ERROR File already exists... Exiting."):
-                sys.exit(1)
-                
-            print("received:", framedReceive(s, debug))
-            byte = f.read(100)
             
     #let server know that file has been done transferring
     framedSend(s, b"Done Transferring File", debug)
