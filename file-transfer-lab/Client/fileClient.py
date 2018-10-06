@@ -59,7 +59,6 @@ if s is None:
 
 #handling put
 if put:
-    
     #store name of file
     split = re.split('put', put)
     clientFile = split[0]
