@@ -71,7 +71,7 @@ if put:
     print("Sending " + clientFile + "...")
     framedSend(s, clientFile.encode(), debug)
     
-    f = (clientFile, "rb")  #open file to start reading and sending
+    f = open(clientFile, "rb")  #open file to start reading and sending
     byte = f.read(100)
     while(f):
         framedSend(s, byte, debug)
