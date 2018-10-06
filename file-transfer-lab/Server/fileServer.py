@@ -44,7 +44,6 @@ while True:
             if not payload:
                 if debug: print("child exiting")
                 sys.exit(0)
-            
             #write to file once it's done receiving
             #the first receive will be file name
             file = payload.decode()
