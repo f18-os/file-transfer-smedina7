@@ -45,7 +45,7 @@ while True:
                 if debug: print("child exiting")
                 sys.exit(0)
                 
-            if ".txt" in payload:
+            if b".txt" in payload:
                 #save name of file to create/copy file: and later append
                 if not os.path.exists(payload):
                     open(payload,"w+")
