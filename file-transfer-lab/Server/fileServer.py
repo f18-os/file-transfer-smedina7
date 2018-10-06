@@ -58,8 +58,6 @@ while True:
             
             #if file doesn't exist then open file
             f = open(file,"wb")
-            #let client know you are receiving the file
-            framedSend(sock, b"Receiving file", debug)
             
             #start receiving file
             copy = framedReceive(sock, debug)
@@ -67,9 +65,7 @@ while True:
                 print("Copying... " + copy.decode())
                 f.write(copy)
                 copy = framedReceive(sock, debug)
-            
-            #payload += b"!"             # make emphatic!
-            
+            f.close()
             framedSend(sock, payload, debug)
                        
     
