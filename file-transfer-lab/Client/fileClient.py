@@ -75,7 +75,7 @@ if put:
         sys.exit(1)
     
     if(framedReceive(s,debug) == b"Ready"):
-        print("Sending ", framedReceive(s,debug))
+        print("Receiving: ", framedReceive(s,debug))
         
     f = open(clientFile, "rb")  #open file to start reading and sending
     byte = f.read(100)
