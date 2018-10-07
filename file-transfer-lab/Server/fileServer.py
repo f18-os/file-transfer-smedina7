@@ -1,3 +1,4 @@
+SERVER WORKING
 #! /usr/bin/env python3
 
 import sys
@@ -44,22 +45,21 @@ while True:
             if not payload:
                 if debug: print("child exiting")
                 sys.exit(0)
-            
-            file = payload.decode()
-            
-            if os.path.exists(file):
-                print("ERROR File already exists... Exiting.")
-                framedSend(sock, b"ERROR File already exists... Exiting.", debug)
-                #exit if file exists
-                sys.exit()
                 
-            #if it doesnt exist let Client know
-            framedSend(sock, b"Ready", debug)
-            #if file doesn't exist then open file
-            f = open(file,"wb")
-                
-            copy = framedReceive(sock, debug)
+            if b".txt" in payload:
+                #save name of file to create/copy file: and later append
+                if os.path.exists(payload):
+                    print("ERROR File already exists... Exiting.")
+                    framedSend(sock, b"ERROR File already exists... Exiting.", debug)
+                    #exit if file exists
+                    sys.exit()
+                framedSend(sock, b"Ready", debug)    
+                #if file doesn't exist then open file
+                f = open(payload,"wb")
+                                    
             #start receiving and copying file
-            print("Copying... " + copy.decode())
-            f.write(copy)
-            framedSend(sock, payload, debug)                       
+            print("Copying... " + payload.decode())
+            f.write(payload)
+            
+            framedSend(sock, payload, debug)
+                       
