@@ -59,8 +59,9 @@ while True:
                 #if file doesn't exist then open file
                 f = open(payload,"wb")
                 
+            copy = framedReceive(sock, debug)
             #start receiving and copying file
-            print("Copying... " + payload.decode())
-            f.write(payload)
+            print("Copying... " + copy.decode())
+            f.write(copy)
             framedSend(sock, payload, debug)
                        
