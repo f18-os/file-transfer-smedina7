@@ -62,5 +62,4 @@ while True:
             #start receiving and copying file
             print("Copying... " + copy.decode())
             f.write(copy)
-            framedSend(sock, payload, debug)
-                       
+            framedSend(sock, payload, debug)                       
