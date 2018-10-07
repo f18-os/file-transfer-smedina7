@@ -53,16 +53,14 @@ while True:
                 #exit if file exists
                 sys.exit()
                 
-            else:
-                #if it doesnt exist let Client know
-                framedSend(sock, b"Ready", debug)
-                #if file doesn't exist then open file
-                f = open(payload,"wb")
+            #if it doesnt exist let Client know
+            framedSend(sock, b"Ready", debug)
+            #if file doesn't exist then open file
+            f = open(file,"wb")
                 
             copy = framedReceive(sock, debug)
             #start receiving and copying file
             print("Copying... " + copy.decode())
             f.write(copy)
             framedSend(sock, payload, debug)
-            framedSend(sock, copy, debub)
                        
