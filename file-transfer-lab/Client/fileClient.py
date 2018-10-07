@@ -77,7 +77,7 @@ if put:
     if(framedReceive(s,debug) == b"Ready"):
         print("Receiving: ", framedReceive(s,debug))
         f = open(clientFile, "rb")  #open file to start reading and sending
-        byte = f.read(100)
+        byte = f.read(100) #read 100 bytes
         while(byte):
             framedSend(s, byte, debug)
             print("Sending:", framedReceive(s, debug))
