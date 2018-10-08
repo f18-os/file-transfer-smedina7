@@ -1,0 +1,6 @@
+Stephanie Medina
+
+Collaborations:
+1. Fernando Martinez - he helped me with getting the overall concepts because I was having a hard time figuring out how to start
+2. Marina Chong - we discussed my issue with code getting stuck when I would try to implement my code for all types of files and I tried the method that she had with finding the path but it did not work with my code.
+3. Andreas Maurer - we helped each other with understanding the concept of the code as well, what goes where.
